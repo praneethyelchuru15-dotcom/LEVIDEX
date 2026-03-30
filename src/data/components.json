@@ -1,0 +1,34 @@
+{
+  "resistors": [
+    {
+      "id": "r-carbon",
+      "name": "Carbon Film Resistor",
+      "description": "Standard through-hole resistor used for basic current limiting.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/43/Resistor.jpg",
+      "symbol": "R"
+    },
+    {
+      "id": "r-smd",
+      "name": "SMD Resistor",
+      "description": "Surface-mount resistor used in compact modern electronics.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ec/SMD_resistors.jpg",
+      "symbol": "R"
+    }
+  ],
+  "capacitors": [
+    {
+      "id": "c-electrolytic",
+      "name": "Electrolytic Capacitor",
+      "description": "Polarized capacitor for high capacitance needs, typically in power supplies.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Electrolytic_capacitors.jpg",
+      "symbol": "C"
+    },
+    {
+      "id": "c-ceramic",
+      "name": "Ceramic Capacitor",
+      "description": "Non-polarized, small value capacitor used for high frequency decoupling.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Ceramic_capacitors.jpg/800px-Ceramic_capacitors.jpg",
+      "symbol": "C"
+    }
+  ]
+}
