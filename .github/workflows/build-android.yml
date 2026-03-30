@@ -43,11 +43,11 @@ jobs:
 
       - name: 🔨 Compile Raw .APK via Gradle
         working-directory: android
-        run: ./gradlew assembleRelease
+        run: ./gradlew assembleDebug
 
       - name: 📤 Upload the Final .APK to GitHub Page
         uses: actions/upload-artifact@v4
         with:
           name: LEVIDEX_Final_Build.apk
-          path: android/app/build/outputs/apk/release/app-release.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
           retention-days: 7
