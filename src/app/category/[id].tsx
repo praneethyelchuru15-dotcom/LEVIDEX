@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, SafeAreaView, Platform, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, SafeAreaView, Platform, ActivityIndicator, TextInput } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { db } from '../../../services/firebaseConfig';
 import { collection, query, where, getDocs } from 'firebase/firestore';
+import { ASSET_MAP } from '../../../utils/assetMap';
 
 export default function CategoryListScreen() {
   const { id, name } = useLocalSearchParams<{ id: string, name: string }>();
   const router = useRouter();
   const [componentList, setComponentList] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchComponents = async () => {
@@ -27,18 +29,29 @@ export default function CategoryListScreen() {
     fetchComponents();
   }, [id]);
 
+  const filteredComponents = componentList.filter((item) => 
+    item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    (item.description && item.description.toLowerCase().includes(searchQuery.toLowerCase()))
+  );
+
   const renderItem = ({ item }: { item: any }) => (
     <TouchableOpacity 
       style={styles.card}
       onPress={() => router.push({ pathname: '/component/[componentId]', params: { componentId: item.id, categoryId: id } })}
     >
-      <Image source={{ uri: item.imageUrl }} style={styles.image} resizeMode="cover" />
+      <Image 
+        source={item.imageKey && ASSET_MAP[item.imageKey] ? ASSET_MAP[item.imageKey] : { uri: item.imageUrl }} 
+        style={styles.image} 
+        resizeMode="contain" 
+      />
       <View style={styles.cardContent}>
         <Text style={styles.itemName}>{item.name}</Text>
         <Text style={styles.itemDescription} numberOfLines={2}>{item.description}</Text>
-        <View style={styles.symbolBadge}>
-          <Text style={styles.symbolText}>Symbol: {item.symbol}</Text>
-        </View>
+        {(item.symbol || item.highlightValue) && (
+          <View style={styles.symbolBadge}>
+            <Text style={styles.symbolText}>{item.highlightLabel || "Symbol"}: {item.highlightValue || item.symbol}</Text>
+          </View>
+        )}
       </View>
       <MaterialCommunityIcons name="chevron-right" size={24} color="#C7C7CC" />
     </TouchableOpacity>
@@ -54,20 +67,32 @@ export default function CategoryListScreen() {
         <View style={{ width: 28 }} /> 
       </View>
 
+      <View style={styles.searchContainer}>
+        <MaterialCommunityIcons name="magnify" size={20} color="#8E8E93" style={styles.searchIcon} />
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search components..."
+          placeholderTextColor="#8E8E93"
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+          clearButtonMode="while-editing"
+        />
+      </View>
+
       {loading ? (
         <View style={styles.emptyState}>
           <ActivityIndicator size="large" color="#007AFF" />
           <Text style={styles.emptyText}>Syncing Live Data...</Text>
         </View>
-      ) : componentList.length === 0 ? (
+      ) : filteredComponents.length === 0 ? (
         <View style={styles.emptyState}>
-          <MaterialCommunityIcons name="cloud-alert" size={64} color="#C7C7CC" />
-          <Text style={styles.emptyText}>No components found!</Text>
-          <Text style={styles.emptySubtext}>Use the Admin Panel to publish one here.</Text>
+          <MaterialCommunityIcons name="cloud-search" size={64} color="#C7C7CC" />
+          <Text style={styles.emptyText}>No matches found</Text>
+          <Text style={styles.emptySubtext}>Try adjusting your search.</Text>
         </View>
       ) : (
         <FlatList
-          data={componentList}
+          data={filteredComponents}
           keyExtractor={(item) => item.id}
           contentContainerStyle={styles.list}
           renderItem={renderItem}
@@ -99,6 +124,24 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 20,
     fontWeight: '700',
+    color: '#1C1C1E',
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#E5E5EA',
+    marginHorizontal: 16,
+    marginTop: 10,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    height: 38,
+  },
+  searchIcon: {
+    marginRight: 6,
+  },
+  searchInput: {
+    flex: 1,
+    fontSize: 16,
     color: '#1C1C1E',
   },
   list: {
