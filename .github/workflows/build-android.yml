@@ -41,16 +41,23 @@ jobs:
       - name: 🏗️ Execute Expo Prebuild (Generate Native Android code)
         run: npx expo prebuild --platform android --clean
 
-      - name: 🔨 Compile Raw .APK via Gradle
+      - name: 🔨 Generate Standalone Offline UI Payload
+        run: |
+          export NODE_OPTIONS="--max-old-space-size=4096"
+          mkdir -p android/app/src/main/assets
+          npx expo export -p android
+          cp -R dist/bundles/android-*.js android/app/src/main/assets/index.android.bundle
+          cp -R dist/assets/ android/app/src/main/res/
+
+      - name: 🔨 Compile Hybrid Standalone .APK
         working-directory: android
         run: |
-          echo "org.gradle.jvmargs=-Xmx6144m -XX:MaxMetaspaceSize=1024m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" >> gradle.properties
           export NODE_OPTIONS="--max-old-space-size=4096"
-          ./gradlew assembleRelease
+          ./gradlew assembleDebug
 
       - name: 📤 Upload the Final .APK to GitHub Page
         uses: actions/upload-artifact@v4
         with:
-          name: LEVIDEX_Final_Build.apk
-          path: android/app/build/outputs/apk/release/app-release.apk
+          name: LEVIDEX_Final_Build_Secure.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
           retention-days: 7
