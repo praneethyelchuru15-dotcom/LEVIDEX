@@ -43,11 +43,17 @@ jobs:
 
       - name: 🔨 Compile Raw .APK via Gradle
         working-directory: android
-        run: ./gradlew assembleDebug
+        run: |
+          export NODE_OPTIONS="--max-old-space-size=4096"
+          ./gradlew assembleRelease \
+            -Pandroid.injected.signing.store.file=$(pwd)/app/debug.keystore \
+            -Pandroid.injected.signing.store.password=android \
+            -Pandroid.injected.signing.key.alias=androiddebugkey \
+            -Pandroid.injected.signing.key.password=android
 
       - name: 📤 Upload the Final .APK to GitHub Page
         uses: actions/upload-artifact@v4
         with:
           name: LEVIDEX_Final_Build.apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: android/app/build/outputs/apk/release/app-release.apk
           retention-days: 7

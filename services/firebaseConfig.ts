@@ -14,12 +14,18 @@ const firebaseConfig = {
     measurementId: process.env.EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+let app: any;
+let auth: any;
+let db: any;
 
-// Initialize Firebase Auth with Local Persistence (Never Login Again)
-export const auth = initializeAuth(app, {
-  persistence: getReactNativePersistence(AsyncStorage)
-});
+try {
+  app = initializeApp(firebaseConfig);
+  auth = initializeAuth(app, {
+    persistence: getReactNativePersistence(AsyncStorage)
+  });
+  db = getFirestore(app);
+} catch (error) {
+  console.error("🔥 Firebase Ignition Fault! Invalid Environment Keys Provided:", error);
+}
 
-export const db = getFirestore(app);
+export { auth, db };
