@@ -44,12 +44,13 @@ jobs:
       - name: 🔨 Compile Raw .APK via Gradle
         working-directory: android
         run: |
+          echo "org.gradle.jvmargs=-Xmx6144m -XX:MaxMetaspaceSize=1024m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8" >> gradle.properties
           export NODE_OPTIONS="--max-old-space-size=4096"
-          ./gradlew assembleRelease --info --stacktrace > gradle_error_dump.txt 2>&1 || true
+          ./gradlew assembleRelease
 
       - name: 📤 Upload the Final .APK to GitHub Page
         uses: actions/upload-artifact@v4
         with:
-          name: COMPILER_ERROR_LOG.txt
-          path: android/gradle_error_dump.txt
+          name: LEVIDEX_Final_Build.apk
+          path: android/app/build/outputs/apk/release/app-release.apk
           retention-days: 7
