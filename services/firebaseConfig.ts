@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { initializeAuth, getReactNativePersistence } from "firebase/auth";
+import { initializeAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -20,9 +20,7 @@ let db: any;
 
 try {
   app = initializeApp(firebaseConfig);
-  auth = initializeAuth(app, {
-    persistence: getReactNativePersistence(AsyncStorage)
-  });
+  auth = initializeAuth(app);
   db = getFirestore(app);
 } catch (error) {
   console.error("🔥 Firebase Ignition Fault! Invalid Environment Keys Provided:", error);
