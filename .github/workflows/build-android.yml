@@ -45,11 +45,11 @@ jobs:
         working-directory: android
         run: |
           export NODE_OPTIONS="--max-old-space-size=4096"
-          ./gradlew assembleRelease
+          ./gradlew assembleRelease --info --stacktrace > gradle_error_dump.txt 2>&1 || true
 
       - name: 📤 Upload the Final .APK to GitHub Page
         uses: actions/upload-artifact@v4
         with:
-          name: LEVIDEX_Final_Build.apk
-          path: android/app/build/outputs/apk/release/app-release.apk
+          name: COMPILER_ERROR_LOG.txt
+          path: android/gradle_error_dump.txt
           retention-days: 7
