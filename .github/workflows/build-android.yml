@@ -7,29 +7,36 @@ on:
 
 jobs:
   build:
-    name: 🏭 Compile Android Release (Pre-bundled)
+    name: 🏭 Compile Android APK
     runs-on: ubuntu-latest
 
     steps:
       - name: 📦 Check out repository
         uses: actions/checkout@v4
 
-      - name: ☕ Setup Java 17 for Android Gradle
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: ☕ Setup Java 17
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: 🔨 Compile .APK via Gradle (JS bundle already embedded)
+      - name: 📥 Install dependencies
+        run: npm install
+
+      - name: 🔨 Build APK
         working-directory: android
         run: |
           chmod +x ./gradlew
-          export NODE_OPTIONS="--max-old-space-size=4096"
           ./gradlew assembleRelease
 
-      - name: 📤 Upload the Final .APK to GitHub Page
+      - name: 📤 Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: LEVIDEX_Final_Build.apk
+          name: LEVIDEX.apk
           path: android/app/build/outputs/apk/release/app-release.apk
           retention-days: 7
