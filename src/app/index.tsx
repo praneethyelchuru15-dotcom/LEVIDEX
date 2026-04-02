@@ -8,6 +8,11 @@ export default function Index() {
   const router = useRouter();
 
   useEffect(() => {
+    // Guard: if Firebase failed to init, go straight to login
+    if (!auth) {
+      setTimeout(() => router.replace('/login'), 100);
+      return;
+    }
     // Listen for Firebase login state changes
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       // Small timeout to allow the router to mount completely before replacing
