@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { initializeAuth } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 // Firebase Project Configuration (Levidex)
@@ -19,10 +19,10 @@ let db: any;
 
 try {
   app = initializeApp(firebaseConfig);
-  auth = initializeAuth(app);
+  auth = getAuth(app);
   db = getFirestore(app);
 } catch (error) {
-  console.error("🔥 Firebase Ignition Fault! Invalid Environment Keys Provided:", error);
+  console.error("Firebase init error:", error);
 }
 
 export { auth, db };
