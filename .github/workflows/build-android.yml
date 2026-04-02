@@ -7,17 +7,12 @@ on:
 
 jobs:
   build:
-    name: 🏭 Compile Pure Android Release
+    name: 🏭 Compile Android Release (Pre-bundled)
     runs-on: ubuntu-latest
 
     steps:
       - name: 📦 Check out repository
         uses: actions/checkout@v4
-
-      - name: ⚙️ Setup Node.js Environment
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
 
       - name: ☕ Setup Java 17 for Android Gradle
         uses: actions/setup-java@v3
@@ -25,25 +20,10 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: 📥 Download React Native Dependencies
-        run: npm install
-
-      - name: 🔐 Generate Native Environment Injection
-        run: |
-          echo "EXPO_PUBLIC_FIREBASE_API_KEY=${{ secrets.EXPO_PUBLIC_FIREBASE_API_KEY }}" >> .env
-          echo "EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN=${{ secrets.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN }}" >> .env
-          echo "EXPO_PUBLIC_FIREBASE_PROJECT_ID=${{ secrets.EXPO_PUBLIC_FIREBASE_PROJECT_ID }}" >> .env
-          echo "EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=${{ secrets.EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET }}" >> .env
-          echo "EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID }}" >> .env
-          echo "EXPO_PUBLIC_FIREBASE_APP_ID=${{ secrets.EXPO_PUBLIC_FIREBASE_APP_ID }}" >> .env
-          echo "EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID=${{ secrets.EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID }}" >> .env
-
-      - name: 🏗️ Execute Expo Prebuild (Generate Native Android code)
-        run: npx expo prebuild --platform android --clean
-
-      - name: 🔨 Compile Raw .APK via Gradle
+      - name: 🔨 Compile .APK via Gradle (JS bundle already embedded)
         working-directory: android
         run: |
+          chmod +x ./gradlew
           export NODE_OPTIONS="--max-old-space-size=4096"
           ./gradlew assembleRelease
 

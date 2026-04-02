@@ -41,4 +41,4 @@ app-example
 
 # generated native folders
 /ios
-/android
+# android is committed intentionally with pre-built JS bundle
