@@ -4,7 +4,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { db } from '../../../services/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
-import { ASSET_MAP } from '../../../utils/assetMap';
+import { ASSET_MAP } from '../../utils/assetMap';
 
 export default function ComponentDetailScreen() {
   const { componentId, categoryId } = useLocalSearchParams<{ componentId: string, categoryId: string }>();
