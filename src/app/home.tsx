@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, FlatList, TouchableOpacity, Dimensions, Image } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, FlatList, TouchableOpacity, Dimensions, Image, StatusBar } from 'react-native';
 import { useRouter } from 'expo-router';
 import { auth, db } from '../../services/firebaseConfig';
 import { signOut } from 'firebase/auth';
@@ -72,6 +72,7 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="dark-content" backgroundColor="#F2F2F7" />
       <View style={styles.header}>
         <View>
           <Text style={styles.greeting}>Welcome back,</Text>
@@ -86,6 +87,16 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
       </View>
+
+      {/* Search Bar */}
+      <TouchableOpacity
+        style={styles.searchBar}
+        activeOpacity={0.7}
+        onPress={() => router.push('/search' as any)}
+      >
+        <MaterialCommunityIcons name="magnify" size={20} color="#8E8E93" />
+        <Text style={styles.searchPlaceholder}>Search components...</Text>
+      </TouchableOpacity>
 
       <FlatList
         data={CATEGORIES}
@@ -133,6 +144,27 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3
+  },
+  searchBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    marginHorizontal: 16,
+    marginBottom: 8,
+    borderRadius: 14,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    gap: 8,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.07,
+    shadowRadius: 6,
+  },
+  searchPlaceholder: {
+    fontSize: 16,
+    color: '#8E8E93',
+    flex: 1,
   },
   grid: {
     padding: 10
