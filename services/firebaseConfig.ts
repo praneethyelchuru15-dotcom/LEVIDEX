@@ -1,9 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+// @ts-ignore - getReactNativePersistence exists at runtime in Firebase v11+
+import { initializeAuth, getReactNativePersistence } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Firebase Project Configuration (Levidex)
-// Using direct values to guarantee they survive the JS bundling process
 const firebaseConfig = {
     apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY || "AIzaSyAdqSjaT9bqFfLTo5jEuA5ILVGAzJHFkZ8",
     authDomain: process.env.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN || "levidex.firebaseapp.com",
@@ -15,7 +16,9 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(AsyncStorage)
+});
 const db = getFirestore(app);
 
 export { auth, db };
