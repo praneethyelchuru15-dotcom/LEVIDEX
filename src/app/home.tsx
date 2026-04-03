@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, FlatList, TouchableOpacity, Dimensions, Image } from 'react-native';
 import { useRouter } from 'expo-router';
-import { auth } from '../../services/firebaseConfig';
+import { auth, db } from '../../services/firebaseConfig';
 import { signOut } from 'firebase/auth';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('window');
@@ -20,6 +21,25 @@ const CATEGORIES: any[] = [
 
 export default function HomeScreen() {
   const router = useRouter();
+
+  // Track app usage
+  useEffect(() => {
+    const logSession = async () => {
+      try {
+        if (auth.currentUser) {
+          await addDoc(collection(db, "app_sessions"), {
+            userId: auth.currentUser.uid,
+            userEmail: auth.currentUser.email,
+            action: "app_open",
+            timestamp: serverTimestamp()
+          });
+        }
+      } catch (e) {
+        // Silently fail — tracking should never break the app
+      }
+    };
+    logSession();
+  }, []);
 
   const handleLogout = () => {
     signOut(auth);

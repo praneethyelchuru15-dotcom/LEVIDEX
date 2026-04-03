@@ -42,3 +42,5 @@ app-example
 # generated native folders
 /ios
 # android is committed intentionally with pre-built JS bundle
+# Admin dashboard (local web app, not tracked)
+AdminDashboard/
