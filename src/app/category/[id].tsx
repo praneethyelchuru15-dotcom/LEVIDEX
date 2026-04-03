@@ -1,10 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, SafeAreaView, Platform, ActivityIndicator, TextInput } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity, SafeAreaView, Platform, ActivityIndicator, TextInput, KeyboardAvoidingView } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { db } from '../../../services/firebaseConfig';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { ASSET_MAP } from '../../utils/assetMap';
+
+const IC_SUBCATEGORIES = [
+  { id: '7400-series', name: 'The 7400 Series', desc: 'TTL Logic Gates', icon: 'memory' },
+  { id: '4000-series', name: 'The 4000 Series', desc: 'CMOS Logic', icon: 'memory' },
+  { id: 'timers-rtc', name: 'Timers & RTC', desc: 'Real-Time Clocks & 555 Timers', icon: 'clock-outline' },
+  { id: 'op-amps', name: 'Op-Amps & Comparators', desc: 'Operational Amplifiers', icon: 'sine-wave' },
+  { id: 'microcontrollers', name: 'Microcontrollers & Microprocessors', desc: 'MCU / MPU', icon: 'cpu-64-bit' },
+  { id: 'power-management', name: 'Power Management', desc: 'Voltage Regulators', icon: 'lightning-bolt' },
+  { id: 'motor-relay', name: 'Motor & Relay Drivers', desc: 'Hardware Drivers', icon: 'engine' },
+  { id: 'communications', name: 'Communication & Interface', desc: 'Serial, USB, I2C, SPI', icon: 'serial-port' },
+  { id: 'data-converters', name: 'Data Converters', desc: 'ADC / DAC', icon: 'chart-bell-curve' },
+  { id: 'optocouplers', name: 'Optocouplers & Isolators', desc: 'Electrical isolation', icon: 'led-outline' },
+  { id: 'audio-ics', name: 'Audio ICs', desc: 'Audio amplifiers', icon: 'speaker' },
+];
 
 export default function CategoryListScreen() {
   const { id, name } = useLocalSearchParams<{ id: string, name: string }>();
@@ -12,11 +26,28 @@ export default function CategoryListScreen() {
   const [componentList, setComponentList] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+  
+  // Specific state for handling the ICs subcategory view
+  const [selectedSubCategory, setSelectedSubCategory] = useState<any>(null);
 
   useEffect(() => {
     const fetchComponents = async () => {
+      // If we are on the ICs root, do not fetch components yet.
+      if (id === 'ics' && !selectedSubCategory) {
+        setComponentList([]);
+        setLoading(false);
+        return;
+      }
+
+      setLoading(true);
       try {
-        const q = query(collection(db, "components"), where("categoryId", "==", id));
+        let q;
+        if (id === 'ics' && selectedSubCategory) {
+          q = query(collection(db, "components"), where("categoryId", "==", id), where("subCategory", "==", selectedSubCategory.id));
+        } else {
+          q = query(collection(db, "components"), where("categoryId", "==", id));
+        }
+        
         const querySnapshot = await getDocs(q);
         const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setComponentList(data);
@@ -27,14 +58,39 @@ export default function CategoryListScreen() {
       }
     };
     fetchComponents();
-  }, [id]);
+  }, [id, selectedSubCategory]);
 
   const filteredComponents = componentList.filter((item) => 
     item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
     (item.description && item.description.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
-  const renderItem = ({ item }: { item: any }) => (
+  const handleBack = () => {
+    if (id === 'ics' && selectedSubCategory) {
+      setSelectedSubCategory(null);
+      setSearchQuery('');
+    } else {
+      router.back();
+    }
+  };
+
+  const renderICSubCategoryItem = ({ item }: { item: any }) => (
+    <TouchableOpacity 
+      style={styles.card}
+      onPress={() => setSelectedSubCategory(item)}
+    >
+      <View style={[styles.image, styles.iconContainer]}>
+        <MaterialCommunityIcons name={item.icon as any} size={36} color="#AF52DE" />
+      </View>
+      <View style={styles.cardContent}>
+        <Text style={styles.itemName}>{item.name}</Text>
+        <Text style={styles.itemDescription} numberOfLines={2}>{item.desc}</Text>
+      </View>
+      <MaterialCommunityIcons name="chevron-right" size={24} color="#C7C7CC" />
+    </TouchableOpacity>
+  );
+
+  const renderComponentItem = ({ item }: { item: any }) => (
     <TouchableOpacity 
       style={styles.card}
       onPress={() => router.push({ pathname: '/component/[componentId]', params: { componentId: item.id, categoryId: id } })}
@@ -57,29 +113,42 @@ export default function CategoryListScreen() {
     </TouchableOpacity>
   );
 
+  const isICRoot = id === 'ics' && !selectedSubCategory;
+  const displayTitle = selectedSubCategory ? selectedSubCategory.name : name;
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+        <TouchableOpacity onPress={handleBack} style={styles.backButton}>
           <MaterialCommunityIcons name="arrow-left" size={28} color="#007AFF" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>{name}</Text>
+        <Text style={styles.headerTitle} numberOfLines={1}>{displayTitle}</Text>
         <View style={{ width: 28 }} /> 
       </View>
 
-      <View style={styles.searchContainer}>
-        <MaterialCommunityIcons name="magnify" size={20} color="#8E8E93" style={styles.searchIcon} />
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search components..."
-          placeholderTextColor="#8E8E93"
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-          clearButtonMode="while-editing"
-        />
-      </View>
+      {!isICRoot && (
+        <View style={styles.searchContainer}>
+          <MaterialCommunityIcons name="magnify" size={20} color="#8E8E93" style={styles.searchIcon} />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search components..."
+            placeholderTextColor="#8E8E93"
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+            clearButtonMode="while-editing"
+          />
+        </View>
+      )}
 
-      {loading ? (
+      {isICRoot ? (
+        <FlatList
+          data={IC_SUBCATEGORIES}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={styles.list}
+          renderItem={renderICSubCategoryItem}
+          showsVerticalScrollIndicator={false}
+        />
+      ) : loading ? (
         <View style={styles.emptyState}>
           <ActivityIndicator size="large" color="#007AFF" />
           <Text style={styles.emptyText}>Syncing Live Data...</Text>
@@ -95,7 +164,7 @@ export default function CategoryListScreen() {
           data={filteredComponents}
           keyExtractor={(item) => item.id}
           contentContainerStyle={styles.list}
-          renderItem={renderItem}
+          renderItem={renderComponentItem}
         />
       )}
     </SafeAreaView>
@@ -122,7 +191,9 @@ const styles = StyleSheet.create({
     padding: 4,
   },
   headerTitle: {
-    fontSize: 20,
+    flex: 1,
+    textAlign: 'center',
+    fontSize: 18,
     fontWeight: '700',
     color: '#1C1C1E',
   },
@@ -161,9 +232,14 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   image: {
-    width: 70,
-    height: 70,
+    width: 60,
+    height: 60,
     borderRadius: 10,
+    backgroundColor: '#F2F2F7',
+  },
+  iconContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: '#F2F2F7',
   },
   cardContent: {
