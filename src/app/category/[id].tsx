@@ -18,6 +18,7 @@ const IC_SUBCATEGORIES = [
   { id: 'data-converters', name: 'Data Converters', desc: 'ADC / DAC', icon: 'chart-bell-curve' },
   { id: 'optocouplers', name: 'Optocouplers & Isolators', desc: 'Electrical isolation', icon: 'led-outline' },
   { id: 'audio-ics', name: 'Audio ICs', desc: 'Audio amplifiers', icon: 'speaker' },
+  { id: 'memory-ics', name: 'Memory ICs', desc: 'EEPROM, Flash, etc.', icon: 'database' },
 ];
 
 export default function CategoryListScreen() {
