@@ -1,0 +1,53 @@
+{
+  "expo": {
+    "name": "LEVIDEX",
+    "slug": "ElectroGuide",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/levidex_logo.jpg",
+    "scheme": "electroguide",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "icon": "./assets/expo.icon"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#000000",
+        "foregroundImage": "./assets/images/levidex_logo.jpg"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.yelchuru16.ElectroGuide"
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#000000",
+          "android": {
+            "image": "./assets/images/levidex_logo.jpg",
+            "imageWidth": 200
+          }
+        }
+      ],
+      "expo-font",
+      "expo-asset"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": false
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "740bc068-ddd8-4137-8a43-63f8e0bae125"
+      }
+    }
+  }
+}

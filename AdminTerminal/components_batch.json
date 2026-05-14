@@ -1,0 +1,114 @@
+[
+  {
+    "categoryId": "resistors",
+    "name": "Carbon Composition",
+    "description": "One of the oldest resistor types. Made from a solid cylindrical resistive element with embedded wire leads. They have high tolerance variance but handle high-energy pulses well.",
+    "imageKey": "Resistor_CarbonComp.png",
+    "highlightLabel": "Key Application",
+    "highlightValue": "High Voltage Surges"
+  },
+  {
+    "categoryId": "resistors",
+    "name": "Carbon Film Resistor",
+    "description": "Constructed by depositing a carbon film on a ceramic core. They are widely used in general-purpose circuits, offering better stability and lower noise than composition resistors.",
+    "imageKey": "Resistor_CarbonFilm.png",
+    "highlightLabel": "Tolerance",
+    "highlightValue": "±5% Typical"
+  },
+  {
+    "categoryId": "resistors",
+    "name": "Metal Film Resistor",
+    "description": "Formed by vacuum-depositing a metal layer on a ceramic substrate. They are highly accurate, boast low thermal noise, and are heavily preferred in precise analog/audio circuitry.",
+    "imageKey": "Resistor_MetalFilm.png",
+    "highlightLabel": "Precision",
+    "highlightValue": "High (±1% or better)"
+  },
+  {
+    "categoryId": "resistors",
+    "name": "Metal Oxide Resistor",
+    "description": "Similar to metal film, but uses metal oxide (like tin oxide). These offer significantly higher operating temperatures and excellent stability under high-stress environments.",
+    "imageKey": "Resistor_MetalOxide.png",
+    "highlightLabel": "Thermal Rating",
+    "highlightValue": "Excellent"
+  },
+  {
+    "categoryId": "resistors",
+    "name": "Wire-Wound Resistor",
+    "description": "Made by wrapping a resistive wire around a non-conductive core. Designed explicitly for massive power dissipation (up to hundreds of watts) in industrial settings.",
+    "imageKey": "Resistor_WireWound.png",
+    "highlightLabel": "Power Handling",
+    "highlightValue": "Extremely High Watts"
+  },
+  {
+    "categoryId": "resistors",
+    "name": "Thick Film Resistor",
+    "description": "Produced by printing a resistive paste onto a ceramic base. Very cost-effective and commonly used in massive-scale consumer electronics and standard SMD packages.",
+    "imageKey": "Resistor_ThickFilm.png",
+    "highlightLabel": "Manufacturing",
+    "highlightValue": "Screen Printing"
+  },
+  {
+    "categoryId": "resistors",
+    "name": "Thin Film Resistor",
+    "description": "Manufactured using vacuum deposition. They offer incredibly tight tolerances and low temperature coefficients compared to thick film variations.",
+    "imageKey": "Resistor_ThinFilm.png",
+    "highlightLabel": "Precision Profile",
+    "highlightValue": "Ultra-Precise"
+  },
+  {
+    "categoryId": "resistors",
+    "name": "SMD Resistor",
+    "description": "Surface-Mount Devices designed to be soldered directly onto the surface of a PCB. Essential for modern, compact, ultra-dense circuit board manufacturing.",
+    "imageKey": "Resistor_SMD.png",
+    "highlightLabel": "Footprint",
+    "highlightValue": "Microscopic (0402, 0603)"
+  },
+  {
+    "categoryId": "resistors",
+    "name": "Potentiometer",
+    "description": "A three-terminal variable resistor with a sliding contact that forms an adjustable voltage divider. Widely used for volume knobs and user calibration.",
+    "imageKey": "Resistor_Potentiometer.png",
+    "highlightLabel": "Adjustment",
+    "highlightValue": "Rotary/Linear Dials"
+  },
+  {
+    "categoryId": "resistors",
+    "name": "Rheostat",
+    "description": "A two-terminal variable resistor used to heavily control current flow in a circuit. Usually built to handle strictly larger currents than a standard potentiometer.",
+    "imageKey": "Resistor_Rheostat.png",
+    "highlightLabel": "Primary Function",
+    "highlightValue": "Current Throttling"
+  },
+  {
+    "categoryId": "resistors",
+    "name": "Trimmer (Preset)",
+    "description": "A miniature variable resistor explicitly designed for 'set-and-forget' calibration inside circuit boards. Usually adjusted with a precision screwdriver.",
+    "imageKey": "Resistor_Trimmer.png",
+    "highlightLabel": "Calibration",
+    "highlightValue": "Internal Factory Setup"
+  },
+  {
+    "categoryId": "resistors",
+    "name": "Varistor (VDR)",
+    "description": "A Voltage Dependent Resistor physically alters its resistance based on the applied voltage. Highly deployed to strictly protect circuits against transient voltage spikes.",
+    "imageKey": "Resistor_Varistor.png",
+    "highlightLabel": "Protection Value",
+    "highlightValue": "Surge Suppression"
+  },
+  {
+    "categoryId": "resistors",
+    "name": "Magneto Resistor",
+    "description": "A solid-state resistor whose internal resistance drops or increases severely based on the intensity of an external magnetic field.",
+    "imageKey": "Resistor_Magneto.png",
+    "highlightLabel": "Reactive Origin",
+    "highlightValue": "Magnetic Fields"
+  },
+  {
+    "categoryId": "resistors",
+    "name": "Strain Gauge",
+    "description": "A sensor heavily utilized in mechanical engineering. Its electrical resistance predictably fluctuates depending directly on the amount of mechanical strain or deformation it undergoes.",
+    "imageKey": "Resistor_Strain.png",
+    "highlightLabel": "Measurement",
+    "highlightValue": "Structural Stress"
+  }
+]

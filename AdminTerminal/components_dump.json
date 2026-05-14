@@ -1,0 +1,1248 @@
+[
+  {
+    "c": "ics",
+    "n": "ULN2003"
+  },
+  {
+    "c": "ics",
+    "n": "ULN2003"
+  },
+  {
+    "c": "sensors",
+    "n": "Flex Sensor"
+  },
+  {
+    "c": "ics",
+    "n": "4069"
+  },
+  {
+    "c": "ics",
+    "n": "DS3231"
+  },
+  {
+    "c": "ics",
+    "n": "74138"
+  },
+  {
+    "c": "transistors",
+    "n": "N-Channel IGBT"
+  },
+  {
+    "c": "capacitors",
+    "n": "Vacuum Capacitor (Fixed)"
+  },
+  {
+    "c": "logic",
+    "n": "AND Gate (7408)"
+  },
+  {
+    "c": "resistors",
+    "n": "Carbon Composition"
+  },
+  {
+    "c": "capacitors",
+    "n": "Polypropylene Film Capacitor (PP)"
+  },
+  {
+    "c": "ics",
+    "n": "4013"
+  },
+  {
+    "c": "ics",
+    "n": "CD4047"
+  },
+  {
+    "c": "capacitors",
+    "n": "Radial Lead Capacitor"
+  },
+  {
+    "c": "diodes",
+    "n": "Dot Matrix Display"
+  },
+  {
+    "c": "ics",
+    "n": "LM324"
+  },
+  {
+    "c": "ics",
+    "n": "7486"
+  },
+  {
+    "c": "capacitors",
+    "n": "Niobium Oxide Electrolytic Capacitor"
+  },
+  {
+    "c": "ics",
+    "n": "MAX232"
+  },
+  {
+    "c": "ics",
+    "n": "MAX232"
+  },
+  {
+    "c": "resistors",
+    "n": "Metal Oxide Resistor"
+  },
+  {
+    "c": "sensors",
+    "n": "Tilt Switch"
+  },
+  {
+    "c": "capacitors",
+    "n": "Motor Start Capacitor"
+  },
+  {
+    "c": "sensors",
+    "n": "Reed Switch"
+  },
+  {
+    "c": "resistors",
+    "n": "Thin Film Resistor"
+  },
+  {
+    "c": "ics",
+    "n": "LM339"
+  },
+  {
+    "c": "ics",
+    "n": "L298N"
+  },
+  {
+    "c": "ics",
+    "n": "7414"
+  },
+  {
+    "c": "ics",
+    "n": "LM386"
+  },
+  {
+    "c": "capacitors",
+    "n": "Mica Trimmer Capacitor"
+  },
+  {
+    "c": "sensors",
+    "n": "Electret Microphone"
+  },
+  {
+    "c": "resistors",
+    "n": "Thick Film Resistor"
+  },
+  {
+    "n": "100nF Ceramic Capacitor"
+  },
+  {
+    "c": "ics",
+    "n": "4026"
+  },
+  {
+    "c": "ics",
+    "n": "4066"
+  },
+  {
+    "c": "ics",
+    "n": "7447"
+  },
+  {
+    "c": "capacitors",
+    "n": "Oil-Impregnated Paper Capacitor (PIO)"
+  },
+  {
+    "c": "transistors",
+    "n": "Power MOSFET"
+  },
+  {
+    "c": "ics",
+    "n": "A4988"
+  },
+  {
+    "c": "diodes",
+    "n": "Standard PN Junction Diode"
+  },
+  {
+    "c": "ics",
+    "n": "LM386"
+  },
+  {
+    "c": "ics",
+    "n": "ESP8266"
+  },
+  {
+    "c": "ics",
+    "n": "ESP8266"
+  },
+  {
+    "c": "logic",
+    "n": "XOR Gate (7486)"
+  },
+  {
+    "c": "ics",
+    "n": "PIC16F877A"
+  },
+  {
+    "c": "ics",
+    "n": "ADC0804"
+  },
+  {
+    "c": "ics",
+    "n": "MCP2515"
+  },
+  {
+    "c": "capacitors",
+    "n": "Tantalum Electrolytic Capacitor (Wet)"
+  },
+  {
+    "c": "resistors",
+    "n": "Thin Film Resistor"
+  },
+  {
+    "c": "ics",
+    "n": "MAX485"
+  },
+  {
+    "c": "capacitors",
+    "n": "Aluminum Polymer Solid Capacitor"
+  },
+  {
+    "c": "diodes",
+    "n": "Solar Cell"
+  },
+  {
+    "c": "ics",
+    "n": "LM741"
+  },
+  {
+    "c": "diodes",
+    "n": "RGBW LED"
+  },
+  {
+    "c": "capacitors",
+    "n": "Multilayer Ceramic Capacitor (MLCC)"
+  },
+  {
+    "c": "ics",
+    "n": "74595"
+  },
+  {
+    "c": "resistors",
+    "n": "Trimmer (Preset)"
+  },
+  {
+    "c": "ics",
+    "n": "LM2596"
+  },
+  {
+    "c": "capacitors",
+    "n": "SMD (Surface Mount) Capacitor"
+  },
+  {
+    "c": "transistors",
+    "n": "Small Signal Transistor"
+  },
+  {
+    "c": "transistors",
+    "n": "PNP Transistor"
+  },
+  {
+    "c": "capacitors",
+    "n": "100nF Ceramic Capacitor"
+  },
+  {
+    "c": "resistors",
+    "n": "SMD Resistor"
+  },
+  {
+    "c": "ics",
+    "n": "AMS1117"
+  },
+  {
+    "c": "resistors",
+    "n": "Carbon Film Resistor"
+  },
+  {
+    "c": "resistors",
+    "n": "Potentiometer"
+  },
+  {
+    "c": "ics",
+    "n": "ADC0804"
+  },
+  {
+    "c": "transistors",
+    "n": "Phototransistor"
+  },
+  {
+    "c": "sensors",
+    "n": "AS608 Fingerprint"
+  },
+  {
+    "c": "ics",
+    "n": "7404"
+  },
+  {
+    "c": "ics",
+    "n": "TDA2030"
+  },
+  {
+    "c": "ics",
+    "n": "PCA9685"
+  },
+  {
+    "c": "diodes",
+    "n": "Super Bright / Ultra Bright LED"
+  },
+  {
+    "c": "capacitors",
+    "n": "Safety Capacitor (Class X1/X2)"
+  },
+  {
+    "c": "ics",
+    "n": "L293D"
+  },
+  {
+    "c": "capacitors",
+    "n": "Feedthrough Capacitor"
+  },
+  {
+    "c": "capacitors",
+    "n": "Metalized Paper Capacitor"
+  },
+  {
+    "c": "resistors",
+    "n": "Varistor (VDR)"
+  },
+  {
+    "c": "transistors",
+    "n": "RF / Microwave Transistor"
+  },
+  {
+    "c": "ics",
+    "n": "7432"
+  },
+  {
+    "c": "capacitors",
+    "n": "Varactor Diode (Varicap)"
+  },
+  {
+    "c": "ics",
+    "n": "7474"
+  },
+  {
+    "c": "transistors",
+    "n": "P-Channel IGBT"
+  },
+  {
+    "c": "resistors",
+    "n": "Trimmer (Preset)"
+  },
+  {
+    "c": "ics",
+    "n": "AT24C256"
+  },
+  {
+    "c": "capacitors",
+    "n": "Vacuum Variable Capacitor"
+  },
+  {
+    "c": "ics",
+    "n": "PT2399"
+  },
+  {
+    "c": "ics",
+    "n": "PAM8403"
+  },
+  {
+    "c": "ics",
+    "n": "7402"
+  },
+  {
+    "c": "resistors",
+    "n": "SMD Resistor"
+  },
+  {
+    "c": "ics",
+    "n": "7473"
+  },
+  {
+    "c": "ics",
+    "n": "TP4056"
+  },
+  {
+    "c": "resistors",
+    "n": "Rheostat"
+  },
+  {
+    "c": "ics",
+    "n": "MCP3008"
+  },
+  {
+    "c": "transistors",
+    "n": "MESFET"
+  },
+  {
+    "c": "capacitors",
+    "n": "Polymer Tantalum Capacitor"
+  },
+  {
+    "c": "ics",
+    "n": "STM32F103C8T6"
+  },
+  {
+    "c": "ics",
+    "n": "OP07"
+  },
+  {
+    "c": "ics",
+    "n": "74595"
+  },
+  {
+    "n": "1kΩ Resistor"
+  },
+  {
+    "c": "capacitors",
+    "n": "Polyester Film Capacitor (PET / Mylar)"
+  },
+  {
+    "c": "ics",
+    "n": "LM311"
+  },
+  {
+    "c": "ics",
+    "n": "MAX485"
+  },
+  {
+    "c": "capacitors",
+    "n": "Ceramic Disc Capacitor"
+  },
+  {
+    "c": "capacitors",
+    "n": "Polyphenylene Sulfide Film Capacitor (PPS)"
+  },
+  {
+    "c": "transistors",
+    "n": "N-Channel JFET"
+  },
+  {
+    "c": "diodes",
+    "n": "Flashing / Blinking LED"
+  },
+  {
+    "c": "diodes",
+    "n": "LED Bar Graph"
+  },
+  {
+    "c": "ics",
+    "n": "7805"
+  },
+  {
+    "c": "diodes",
+    "n": "Ultraviolet LED (UV)"
+  },
+  {
+    "c": "ics",
+    "n": "ATmega328P"
+  },
+  {
+    "c": "capacitors",
+    "n": "Axial Lead Capacitor"
+  },
+  {
+    "c": "ics",
+    "n": "NE556"
+  },
+  {
+    "c": "capacitors",
+    "n": "Tantalum Electrolytic Capacitor (Dry)"
+  },
+  {
+    "c": "sensors",
+    "n": "UV Light Sensor"
+  },
+  {
+    "c": "sensors",
+    "n": "TCS3200 Color Sensor"
+  },
+  {
+    "c": "ics",
+    "n": "7486"
+  },
+  {
+    "c": "logic",
+    "n": "NOT Gate (7404)"
+  },
+  {
+    "c": "sensors",
+    "n": "Thermistor"
+  },
+  {
+    "c": "capacitors",
+    "n": "Air-Gap Tuning Capacitor"
+  },
+  {
+    "c": "sensors",
+    "n": "Sound Level Sensor"
+  },
+  {
+    "c": "ics",
+    "n": "4017"
+  },
+  {
+    "c": "capacitors",
+    "n": "Silicon Capacitor"
+  },
+  {
+    "c": "transistors",
+    "n": "Darlington Transistor"
+  },
+  {
+    "c": "ics",
+    "n": "L298N"
+  },
+  {
+    "c": "transistors",
+    "n": "Unijunction Transistor (UJT)"
+  },
+  {
+    "c": "ics",
+    "n": "LM317"
+  },
+  {
+    "c": "diodes",
+    "n": "PIN Diode"
+  },
+  {
+    "c": "ics",
+    "n": "TP4056"
+  },
+  {
+    "c": "transistors",
+    "n": "Programmable Unijunction Transistor (PUT)"
+  },
+  {
+    "c": "resistors",
+    "n": "Carbon Film Resistor"
+  },
+  {
+    "c": "sensors",
+    "n": "BMP280 Barometer"
+  },
+  {
+    "c": "ics",
+    "n": "AT24C256"
+  },
+  {
+    "c": "resistors",
+    "n": "Metal Film Resistor"
+  },
+  {
+    "c": "ics",
+    "n": "TL071"
+  },
+  {
+    "c": "ics",
+    "n": "7408"
+  },
+  {
+    "c": "capacitors",
+    "n": "Ceramic Trimmer Capacitor"
+  },
+  {
+    "c": "ics",
+    "n": "7400"
+  },
+  {
+    "n": "1kΩ Resistor"
+  },
+  {
+    "c": "sensors",
+    "n": "HX711 Load Cell"
+  },
+  {
+    "c": "ics",
+    "n": "LM358"
+  },
+  {
+    "c": "ics",
+    "n": "A4988"
+  },
+  {
+    "c": "ics",
+    "n": "LM741"
+  },
+  {
+    "c": "diodes",
+    "n": "COB (Chip on Board) LED"
+  },
+  {
+    "c": "resistors",
+    "n": "Magneto Resistor"
+  },
+  {
+    "c": "capacitors",
+    "n": "Lighting Ballast Capacitor"
+  },
+  {
+    "c": "diodes",
+    "n": "Standard Indicator LED"
+  },
+  {
+    "c": "sensors",
+    "n": "ADXL335 Accelerometer"
+  },
+  {
+    "c": "ics",
+    "n": "4001"
+  },
+  {
+    "c": "capacitors",
+    "n": "Polycarbonate Film Capacitor (PC)"
+  },
+  {
+    "c": "diodes",
+    "n": "Backward Diode"
+  },
+  {
+    "c": "ics",
+    "n": "NE556"
+  },
+  {
+    "c": "transistors",
+    "n": "Digital Transistor"
+  },
+  {
+    "c": "diodes",
+    "n": "Gunn Diode"
+  },
+  {
+    "c": "capacitors",
+    "n": "Pseudocapacitor"
+  },
+  {
+    "c": "ics",
+    "n": "4N25"
+  },
+  {
+    "c": "ics",
+    "n": "L293D"
+  },
+  {
+    "c": "ics",
+    "n": "OP07"
+  },
+  {
+    "c": "transistors",
+    "n": "Sziklai Pair"
+  },
+  {
+    "c": "transistors",
+    "n": "Depletion Mode MOSFET"
+  },
+  {
+    "c": "sensors",
+    "n": "Thermocouple"
+  },
+  {
+    "c": "sensors",
+    "n": "MQ-3 Alcohol Sensor"
+  },
+  {
+    "c": "ics",
+    "n": "PC817"
+  },
+  {
+    "c": "sensors",
+    "n": "DHT22 Hum & Temp"
+  },
+  {
+    "c": "resistors",
+    "n": "Rheostat"
+  },
+  {
+    "c": "capacitors",
+    "n": "Polyethylene Naphthalate Film Capacitor (PEN)"
+  },
+  {
+    "c": "ics",
+    "n": "7404"
+  },
+  {
+    "c": "diodes",
+    "n": "Varactor Diode (Varicap)"
+  },
+  {
+    "c": "resistors",
+    "n": "Varistor (VDR)"
+  },
+  {
+    "c": "logic",
+    "n": "NAND Gate (7400)"
+  },
+  {
+    "c": "diodes",
+    "n": "Tunnel Diode (Esaki)"
+  },
+  {
+    "c": "sensors",
+    "n": "HMC5883L Compass"
+  },
+  {
+    "c": "transistors",
+    "n": "Dual-Gate MOSFET"
+  },
+  {
+    "n": "100nF Ceramic Capacitor"
+  },
+  {
+    "c": "ics",
+    "n": "74138"
+  },
+  {
+    "c": "diodes",
+    "n": "Crowbar Diode"
+  },
+  {
+    "c": "ics",
+    "n": "AMS1117"
+  },
+  {
+    "c": "ics",
+    "n": "STM32F103C8T6"
+  },
+  {
+    "c": "ics",
+    "n": "ADS1115"
+  },
+  {
+    "c": "ics",
+    "n": "MOC3021"
+  },
+  {
+    "c": "resistors",
+    "n": "Wire-Wound Resistor"
+  },
+  {
+    "c": "ics",
+    "n": "7805"
+  },
+  {
+    "c": "diodes",
+    "n": "Zener Diode"
+  },
+  {
+    "c": "ics",
+    "n": "PCA9685"
+  },
+  {
+    "c": "ics",
+    "n": "4011"
+  },
+  {
+    "c": "sensors",
+    "n": "Rotary Encoder"
+  },
+  {
+    "c": "capacitors",
+    "n": "Polytetrafluoroethylene Film Capacitor (PTFE)"
+  },
+  {
+    "c": "ics",
+    "n": "6502"
+  },
+  {
+    "c": "diodes",
+    "n": "Addressable LED"
+  },
+  {
+    "c": "capacitors",
+    "n": "Tubular Ceramic Capacitor"
+  },
+  {
+    "c": "transistors",
+    "n": "High Voltage / Power Transistor"
+  },
+  {
+    "c": "ics",
+    "n": "7408"
+  },
+  {
+    "c": "resistors",
+    "n": "Strain Gauge"
+  },
+  {
+    "c": "logic",
+    "n": "NOR Gate (7402)"
+  },
+  {
+    "c": "resistors",
+    "n": "Strain Gauge"
+  },
+  {
+    "c": "capacitors",
+    "n": "Silver Mica Capacitor"
+  },
+  {
+    "c": "capacitors",
+    "n": "Polyimide Film Capacitor (Kapton)"
+  },
+  {
+    "c": "capacitors",
+    "n": "Audio Crossover Capacitor"
+  },
+  {
+    "c": "ics",
+    "n": "DS1307"
+  },
+  {
+    "c": "logic",
+    "n": "OR Gate (7432)"
+  },
+  {
+    "c": "diodes",
+    "n": "Fast Recovery Diode"
+  },
+  {
+    "c": "ics",
+    "n": "CH340G"
+  },
+  {
+    "c": "diodes",
+    "n": "Filament LED"
+  },
+  {
+    "c": "ics",
+    "n": "6502"
+  },
+  {
+    "c": "sensors",
+    "n": "Photodiode"
+  },
+  {
+    "c": "ics",
+    "n": "4013"
+  },
+  {
+    "c": "sensors",
+    "n": "EMG/ECG Sensor"
+  },
+  {
+    "c": "resistors",
+    "n": "Metal Oxide Resistor"
+  },
+  {
+    "c": "diodes",
+    "n": "RGB LED"
+  },
+  {
+    "c": "sensors",
+    "n": "MPU6050 IMU"
+  },
+  {
+    "c": "diodes",
+    "n": "Ultra-Fast Recovery Diode"
+  },
+  {
+    "c": "ics",
+    "n": "CD4047"
+  },
+  {
+    "c": "capacitors",
+    "n": "Safety Capacitor (Class Y1/Y2)"
+  },
+  {
+    "c": "diodes",
+    "n": "Laser Diode"
+  },
+  {
+    "c": "diodes",
+    "n": "Schottky Diode"
+  },
+  {
+    "c": "resistors",
+    "n": "Magneto Resistor"
+  },
+  {
+    "c": "ics",
+    "n": "4026"
+  },
+  {
+    "c": "transistors",
+    "n": "HEMT"
+  },
+  {
+    "c": "ics",
+    "n": "7490"
+  },
+  {
+    "c": "capacitors",
+    "n": "Electric Double-Layer Capacitor (EDLC)"
+  },
+  {
+    "c": "ics",
+    "n": "4017"
+  },
+  {
+    "c": "capacitors",
+    "n": "DC-Link Capacitor"
+  },
+  {
+    "c": "resistors",
+    "n": "Metal Film Resistor"
+  },
+  {
+    "c": "ics",
+    "n": "MCP2515"
+  },
+  {
+    "c": "diodes",
+    "n": "SMD (Surface Mount) LED"
+  },
+  {
+    "c": "diodes",
+    "n": "Step Recovery Diode"
+  },
+  {
+    "n": "100nF Ceramic Capacitor"
+  },
+  {
+    "c": "ics",
+    "n": "4001"
+  },
+  {
+    "c": "ics",
+    "n": "4069"
+  },
+  {
+    "c": "ics",
+    "n": "LM324"
+  },
+  {
+    "c": "ics",
+    "n": "7490"
+  },
+  {
+    "c": "sensors",
+    "n": "PM2.5 Air Quality"
+  },
+  {
+    "c": "ics",
+    "n": "PT2399"
+  },
+  {
+    "c": "ics",
+    "n": "PAM8403"
+  },
+  {
+    "c": "ics",
+    "n": "PIC16F877A"
+  },
+  {
+    "c": "ics",
+    "n": "DS1307"
+  },
+  {
+    "n": "100nF Ceramic Capacitor"
+  },
+  {
+    "c": "diodes",
+    "n": "Avalanche Diode"
+  },
+  {
+    "c": "diodes",
+    "n": "Photodiode"
+  },
+  {
+    "c": "diodes",
+    "n": "7-Segment Display"
+  },
+  {
+    "c": "ics",
+    "n": "W25Q128"
+  },
+  {
+    "c": "ics",
+    "n": "MCP3008"
+  },
+  {
+    "c": "sensors",
+    "n": "LiDAR Module"
+  },
+  {
+    "c": "ics",
+    "n": "7447"
+  },
+  {
+    "c": "sensors",
+    "n": "NEO-6M GPS"
+  },
+  {
+    "c": "ics",
+    "n": "LM311"
+  },
+  {
+    "c": "sensors",
+    "n": "VL53L0X ToF"
+  },
+  {
+    "c": "resistors",
+    "n": "Thick Film Resistor"
+  },
+  {
+    "c": "ics",
+    "n": "74165"
+  },
+  {
+    "c": "ics",
+    "n": "ATmega328P"
+  },
+  {
+    "c": "ics",
+    "n": "LM2596"
+  },
+  {
+    "c": "ics",
+    "n": "4011"
+  },
+  {
+    "c": "ics",
+    "n": "7402"
+  },
+  {
+    "c": "capacitors",
+    "n": "Motor Run Capacitor"
+  },
+  {
+    "c": "ics",
+    "n": "TL071"
+  },
+  {
+    "c": "ics",
+    "n": "ADS1115"
+  },
+  {
+    "c": "resistors",
+    "n": "Potentiometer"
+  },
+  {
+    "c": "ics",
+    "n": "MCP4725"
+  },
+  {
+    "c": "capacitors",
+    "n": "Glass Capacitor"
+  },
+  {
+    "c": "capacitors",
+    "n": "Snubber Capacitor"
+  },
+  {
+    "c": "ics",
+    "n": "CH340G"
+  },
+  {
+    "c": "ics",
+    "n": "LM358"
+  },
+  {
+    "c": "ics",
+    "n": "W25Q128"
+  },
+  {
+    "c": "ics",
+    "n": "4066"
+  },
+  {
+    "c": "ics",
+    "n": "7414"
+  },
+  {
+    "c": "sensors",
+    "n": "Inductive Proximity"
+  },
+  {
+    "c": "ics",
+    "n": "NE555"
+  },
+  {
+    "c": "diodes",
+    "n": "14-Segment / 16-Segment Display"
+  },
+  {
+    "c": "capacitors",
+    "n": "Lithium-Ion Capacitor"
+  },
+  {
+    "n": "100nF Ceramic Capacitor"
+  },
+  {
+    "c": "transistors",
+    "n": "JFET (Junction FET)"
+  },
+  {
+    "c": "sensors",
+    "n": "Hall Effect Sensor"
+  },
+  {
+    "n": "1kΩ Resistor"
+  },
+  {
+    "c": "ics",
+    "n": "7400"
+  },
+  {
+    "c": "diodes",
+    "n": "Tri-Color LED"
+  },
+  {
+    "c": "transistors",
+    "n": "MOSFET"
+  },
+  {
+    "c": "transistors",
+    "n": "NPN Transistor"
+  },
+  {
+    "c": "diodes",
+    "n": "Transient Voltage Suppression (TVS) Diode"
+  },
+  {
+    "c": "ics",
+    "n": "7473"
+  },
+  {
+    "c": "ics",
+    "n": "7432"
+  },
+  {
+    "c": "capacitors",
+    "n": "Polystyrene Film Capacitor (PS)"
+  },
+  {
+    "c": "capacitors",
+    "n": "Film Trimmer Capacitor"
+  },
+  {
+    "c": "ics",
+    "n": "LM339"
+  },
+  {
+    "c": "sensors",
+    "n": "LM35 Temp IC"
+  },
+  {
+    "c": "resistors",
+    "n": "Wire-Wound Resistor"
+  },
+  {
+    "c": "diodes",
+    "n": "Bridge Rectifier"
+  },
+  {
+    "c": "capacitors",
+    "n": "Microwave Bare Lead-less Disc Ceramic"
+  },
+  {
+    "c": "ics",
+    "n": "NE555"
+  },
+  {
+    "c": "ics",
+    "n": "DS3231"
+  },
+  {
+    "c": "sensors",
+    "n": "TTP223 Touch Sensor"
+  },
+  {
+    "c": "ics",
+    "n": "MCP4725"
+  },
+  {
+    "c": "ics",
+    "n": "TDA2030"
+  },
+  {
+    "c": "sensors",
+    "n": "Force Resistor (FSR)"
+  },
+  {
+    "c": "diodes",
+    "n": "Miniature / Subminiature LED"
+  },
+  {
+    "c": "diodes",
+    "n": "Bi-Color LED"
+  },
+  {
+    "c": "diodes",
+    "n": "Infrared LED (IR)"
+  },
+  {
+    "c": "ics",
+    "n": "MOC3021"
+  },
+  {
+    "c": "sensors",
+    "n": "Optical Heart Rate"
+  },
+  {
+    "n": "1kΩ Resistor"
+  },
+  {
+    "c": "resistors",
+    "n": "Carbon Composition"
+  },
+  {
+    "c": "ics",
+    "n": "7474"
+  },
+  {
+    "c": "diodes",
+    "n": "Signal Diode"
+  },
+  {
+    "c": "ics",
+    "n": "LM317"
+  },
+  {
+    "c": "transistors",
+    "n": "Enhancement Mode MOSFET"
+  },
+  {
+    "c": "logic",
+    "n": "XNOR Gate (74266)"
+  },
+  {
+    "c": "capacitors",
+    "n": "Aluminum Electrolytic Capacitor (Wet)"
+  },
+  {
+    "c": "ics",
+    "n": "PC817"
+  },
+  {
+    "n": "1kΩ Resistor"
+  },
+  {
+    "c": "transistors",
+    "n": "P-Channel JFET"
+  },
+  {
+    "c": "sensors",
+    "n": "DS18B20 Temp IC"
+  },
+  {
+    "c": "ics",
+    "n": "4N25"
+  },
+  {
+    "c": "ics",
+    "n": "74165"
+  },
+  {
+    "c": "sensors",
+    "n": "Capacitive Proximity"
+  },
+  {
+    "c": "diodes",
+    "n": "High-Power LED"
+  }
+]

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEVIDEX Admin Dashboard</title>
+    <meta name="description" content="Admin dashboard for managing LEVIDEX electronics encyclopedia app">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Error Meme Overlay -->
+    <div id="memeOverlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: black; z-index: 10000; align-items: center; justify-content: center; flex-direction: column;">
+        <img src="error_meme.jpg" alt="Error Meme" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+    </div>
+
+    <!-- Success Meme Overlay -->
+    <div id="successMemeOverlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: black; z-index: 10000; align-items: center; justify-content: center; flex-direction: column;">
+        <img src="success_meme.jpg" alt="Success Meme" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+    </div>
+
+    <!-- Login Overlay -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-card">
+            <div class="login-header">
+                <span class="material-icons-round" style="font-size: 48px; color: #5856D6;">admin_panel_settings</span>
+                <h2>LEVIDEX Admin</h2>
+                <p>Restricted Access Portal</p>
+            </div>
+            <div id="loginError" class="login-error hidden"></div>
+            <form id="loginForm" class="login-form">
+                <div class="input-group">
+                    <label>Admin Email</label>
+                    <input type="email" id="adminEmail" required placeholder="admin@levidex.com">
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="adminPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" id="loginBtn" class="primary-btn">Secure Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <span class="brand-icon material-icons-round">bolt</span>
+            <div>
+                <h1 class="brand-title">LEVIDEX</h1>
+                <p class="brand-sub">Admin Console</p>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-page="dashboard">
+                <span class="material-icons-round">dashboard</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-page="users">
+                <span class="material-icons-round">group</span>
+                <span>Users</span>
+            </a>
+            <a href="#" class="nav-item" data-page="components">
+                <span class="material-icons-round">memory</span>
+                <span>Components</span>
+            </a>
+            <a href="#" class="nav-item" data-page="usage">
+                <span class="material-icons-round">analytics</span>
+                <span>Usage Logs</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span class="material-icons-round">admin_panel_settings</span>
+                    <span>Admin</span>
+                </div>
+                <button id="logoutBtn" style="background: none; border: none; color: #ff3b30; cursor: pointer; padding: 4px;">
+                    <span class="material-icons-round">logout</span>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <button class="menu-toggle" id="menuToggle">
+                <span class="material-icons-round">menu</span>
+            </button>
+            <h2 class="page-title" id="pageTitle">Dashboard</h2>
+            <div class="topbar-right">
+                <span class="live-badge"><span class="live-dot"></span> Live</span>
+                <button class="refresh-btn" id="refreshBtn" title="Refresh Data">
+                    <span class="material-icons-round">refresh</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Page: Dashboard -->
+        <section class="page active" id="page-dashboard">
+            <div class="stats-grid">
+                <div class="stat-card stat-users">
+                    <div class="stat-icon-wrap"><span class="material-icons-round">group</span></div>
+                    <div class="stat-info">
+                        <p class="stat-label">Total Users</p>
+                        <h3 class="stat-value" id="totalUsers">—</h3>
+                    </div>
+                </div>
+                <div class="stat-card stat-components">
+                    <div class="stat-icon-wrap"><span class="material-icons-round">memory</span></div>
+                    <div class="stat-info">
+                        <p class="stat-label">Total Components</p>
+                        <h3 class="stat-value" id="totalComponents">—</h3>
+                    </div>
+                </div>
+                <div class="stat-card stat-sessions">
+                    <div class="stat-icon-wrap"><span class="material-icons-round">phone_android</span></div>
+                    <div class="stat-info">
+                        <p class="stat-label">App Sessions</p>
+                        <h3 class="stat-value" id="totalSessions">—</h3>
+                    </div>
+                </div>
+                <div class="stat-card stat-categories">
+                    <div class="stat-icon-wrap"><span class="material-icons-round">category</span></div>
+                    <div class="stat-info">
+                        <p class="stat-label">Categories</p>
+                        <h3 class="stat-value" id="totalCategories">—</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-row">
+                <div class="chart-card">
+                    <h4 class="chart-title">Components by Category</h4>
+                    <div class="chart-container">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h4 class="chart-title">User Professions</h4>
+                    <div class="chart-container">
+                        <canvas id="professionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-card full-width">
+                <h4 class="chart-title">Recent App Sessions (Last 7 Days)</h4>
+                <div class="chart-container-wide">
+                    <canvas id="sessionsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page: Users -->
+        <section class="page" id="page-users">
+            
+            <!-- Create Admin Form (Only visible to Master Admin) -->
+            <div id="createAdminCard" class="chart-card full-width" style="margin-bottom: 24px; display: none;">
+                <h4 class="chart-title">Create New Admin Account</h4>
+                <form id="createAdminForm" style="display: flex; gap: 16px; align-items: flex-end;">
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">Full Name</label>
+                        <input type="text" id="newAdminName" required placeholder="John Doe" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-primary); color: var(--text-primary);">
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">Admin Email (ID)</label>
+                        <input type="email" id="newAdminEmail" required placeholder="newadmin@levidex.com" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-primary); color: var(--text-primary);">
+                    </div>
+                    <div style="flex: 1;">
+                        <label style="display: block; font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">Password</label>
+                        <input type="password" id="newAdminPassword" required minlength="6" placeholder="Min 6 characters" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-primary); color: var(--text-primary);">
+                    </div>
+                    <button type="submit" id="createAdminBtn" style="padding: 11px 24px; background: var(--accent-blue); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Create Admin</button>
+                </form>
+                <div id="createAdminMsg" style="margin-top: 12px; font-size: 14px; display: none;"></div>
+            </div>
+
+            <div class="page-header">
+                <h3>Registered Users</h3>
+                <div class="search-box">
+                    <span class="material-icons-round">search</span>
+                    <input type="text" id="userSearch" placeholder="Search users...">
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table class="data-table" id="usersTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Profession</th>
+                            <th>Role</th>
+                            <th id="userActionHeader" style="display: none;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Page: Components -->
+        <section class="page" id="page-components">
+            <div class="page-header">
+                <h3>All Components</h3>
+                <div class="search-box">
+                    <span class="material-icons-round">search</span>
+                    <input type="text" id="componentSearch" placeholder="Search components...">
+                </div>
+            </div>
+            <div class="category-filters" id="categoryFilters"></div>
+            <div class="table-wrap">
+                <table class="data-table" id="componentsTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Symbol</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="componentsBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Page: Usage -->
+        <section class="page" id="page-usage">
+            <div class="page-header">
+                <h3>Usage Logs</h3>
+            </div>
+            <div class="table-wrap">
+                <table class="data-table" id="usageTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>User Email</th>
+                            <th>Action</th>
+                            <th>IP Address</th>
+                            <th>Location</th>
+                            <th>Timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usageBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="spinner"></div>
+            <p>Loading data from Firebase...</p>
+        </div>
+    </main>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
