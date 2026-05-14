@@ -42,4 +42,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: LEVIDEX-App-APK
-          path: ./ElectroGuide/android/app/build/outputs/apk/release/app-debug.apk
+          path: ./ElectroGuide/android/app/build/outputs/apk/debug/app-debug.apk
