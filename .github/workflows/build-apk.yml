@@ -43,12 +43,12 @@ jobs:
         working-directory: ./ElectroGuide
         run: npx expo prebuild --platform android --clean
 
-      - name: Build APK (Gradle assembleDebug)
+      - name: Build APK (Gradle assembleRelease)
         working-directory: ./ElectroGuide/android
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleRelease
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: LEVIDEX-App-APK
-          path: ./ElectroGuide/android/app/build/outputs/apk/debug/app-debug.apk
+          path: ./ElectroGuide/android/app/build/outputs/apk/release/app-release.apk
