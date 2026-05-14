@@ -19,6 +19,7 @@ jobs:
       EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: 1030103160013
       EXPO_PUBLIC_FIREBASE_APP_ID: 1:1030103160013:web:2641d5aa76234822d18584
       EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID: G-MZCCQMQ3E5
+      NODE_OPTIONS: --max_old_space_size=4096
 
     steps:
       - name: Checkout Code
@@ -42,6 +43,10 @@ jobs:
       - name: Expo Prebuild (Generate Native Android folder)
         working-directory: ./ElectroGuide
         run: npx expo prebuild --platform android --clean
+
+      - name: Fix OOM by increasing Gradle memory
+        working-directory: ./ElectroGuide/android
+        run: sed -i 's/org.gradle.jvmargs=-Xmx2048m -XX:MaxMetaspaceSize=512m/org.gradle.jvmargs=-Xmx4096m -XX:MaxMetaspaceSize=1024m/' gradle.properties
 
       - name: Build APK (Gradle assembleRelease)
         working-directory: ./ElectroGuide/android
