@@ -57,3 +57,4 @@ jobs:
         with:
           name: LEVIDEX-App-APK
           path: ./ElectroGuide/android/app/build/outputs/apk/release/app-release.apk
+
