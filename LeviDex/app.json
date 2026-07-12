@@ -1,0 +1,56 @@
+{
+  "expo": {
+    "name": "LEVIDEX",
+    "slug": "LeviDex",
+    "version": "1.0.0",
+    "sdkVersion": "54.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/levidex_logo.jpg",
+    "scheme": "levidex",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "icon": "./assets/expo.icon"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#000000",
+        "foregroundImage": "./assets/images/levidex_logo.jpg"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.yelchuru16.levidex"
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#000000",
+          "android": {
+            "image": "./assets/images/levidex_logo.jpg",
+            "imageWidth": 200
+          }
+        }
+      ],
+      "expo-font",
+      "expo-asset",
+      "expo-web-browser"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": false
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "fb5eef43-7648-49dd-aab3-56a75c40817b"
+      }
+    },
+    "owner": "yelchuru16"
+  }
+}
