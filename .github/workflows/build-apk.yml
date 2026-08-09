@@ -40,16 +40,16 @@ jobs:
         working-directory: ./LeviDex/android
         run: |
           chmod +x ./gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleRelease
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: LeviDex-App-APK
-          path: LeviDex/android/app/build/outputs/apk/debug/app-debug.apk
+          path: LeviDex/android/app/build/outputs/apk/release/app-release.apk
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v1.0.${{ github.run_number }}
-          files: LeviDex/android/app/build/outputs/apk/debug/app-debug.apk
+          files: LeviDex/android/app/build/outputs/apk/release/app-release.apk
