@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, FlatList, StatusBar, Platform, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { db } from '../../services/firebaseConfig';
+import { db } from '../../../services/firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
 
 export default function PinoutsHubScreen() {

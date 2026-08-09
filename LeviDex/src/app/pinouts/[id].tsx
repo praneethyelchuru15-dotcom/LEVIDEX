@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, StatusBar, Platform, ActivityIndicator } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { db } from '../../services/firebaseConfig';
+import { db } from '../../../services/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 
 const TYPE_COLORS: Record<string, string> = {
