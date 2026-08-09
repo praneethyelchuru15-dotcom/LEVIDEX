@@ -5,6 +5,8 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import { Platform } from 'react-native';
+
 // Firebase Project Configuration (Levidex)
 const firebaseConfig = {
     apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY || "AIzaSyAAfn2GwHqQ3qjF6uc-nlC6aif_N0iDAlE",
@@ -17,9 +19,12 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = initializeAuth(app, {
-  persistence: getReactNativePersistence(AsyncStorage)
-});
+
+import { getAuth } from "firebase/auth";
+const auth = Platform.OS === 'web' 
+  ? getAuth(app) 
+  : initializeAuth(app, { persistence: getReactNativePersistence(AsyncStorage) });
+
 const db = getFirestore(app);
 const storage = getStorage(app);
 
