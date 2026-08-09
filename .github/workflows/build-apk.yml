@@ -32,24 +32,30 @@ jobs:
         working-directory: ./LeviDex
         run: npm install
 
-      - name: Prebuild Android native project
+      - name: Prebuild Android
         working-directory: ./LeviDex
-        run: npx expo prebuild --clean --platform android
+        run: npx expo prebuild -p android --clean
+
+      - name: Prevent GitHub Actions OOM Crash
+        working-directory: ./LeviDex/android
+        run: |
+          echo "reactNativeArchitectures=armeabi-v7a,arm64-v8a" >> gradle.properties
+          echo "org.gradle.jvmargs=-Xmx4096m -XX:MaxMetaspaceSize=1024m" >> gradle.properties
 
       - name: Build APK with Gradle
         working-directory: ./LeviDex/android
         run: |
           chmod +x ./gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleRelease
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: LeviDex-App-APK
-          path: LeviDex/android/app/build/outputs/apk/debug/app-debug.apk
+          path: LeviDex/android/app/build/outputs/apk/release/app-release.apk
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v1.0.${{ github.run_number }}
-          files: LeviDex/android/app/build/outputs/apk/debug/app-debug.apk
+          files: LeviDex/android/app/build/outputs/apk/release/app-release.apk
