@@ -1,48 +1,43 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, FlatList, StatusBar, Platform } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, FlatList, StatusBar, Platform, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-
-const PINOUTS = [
-  { id: '555-timer', name: '555 Timer IC', desc: 'Precision Timing Circuit', icon: 'chip' },
-  { id: 'lm358', name: 'LM358 Op-Amp', desc: 'Dual Operational Amplifier', icon: 'sine-wave' },
-  { id: 'atmega328p', name: 'ATmega328P', desc: '8-bit AVR Microcontroller', icon: 'memory' },
-  { id: 'usb-c', name: 'USB-C Receptacle', desc: '24-pin Connector', icon: 'usb-port' },
-  { id: 'nano', name: 'Arduino Nano', desc: 'ATmega328P Dev Board', icon: 'developer-board' },
-  { id: 'esp32', name: 'ESP32 (38-pin)', desc: 'Wi-Fi & Bluetooth MCU', icon: 'wifi' },
-  { id: 'rpi4', name: 'Raspberry Pi 4', desc: '40-pin GPIO Header', icon: 'raspberry-pi' },
-  { id: 'l298n', name: 'L298N Motor Driver', desc: 'Dual H-Bridge Driver', icon: 'engine' },
-  { id: 'hcsr04', name: 'HC-SR04 Sensor', desc: 'Ultrasonic Distance Sensor', icon: 'radar' },
-  { id: 'oled', name: 'I2C OLED Display', desc: '0.96" OLED (4-pin)', icon: 'monitor' },
-  { id: 'nrf24l01', name: 'NRF24L01', desc: '2.4GHz RF Transceiver', icon: 'radio-tower' },
-  { id: 'relay', name: '1-Channel Relay', desc: '5V Relay Module', icon: 'electric-switch' },
-  { id: '74hc595', name: '74HC595', desc: '8-bit Shift Register', icon: 'memory' },
-  { id: '16x2-lcd', name: '16x2 LCD Display', desc: 'Standard Character LCD', icon: 'monitor' },
-  { id: 'lm317', name: 'LM317', desc: 'Adjustable Voltage Regulator', icon: 'flash' },
-  { id: 'dht11', name: 'DHT11 Sensor', desc: 'Temperature & Humidity', icon: 'thermometer' },
-  { id: 'a4988', name: 'A4988', desc: 'Stepper Motor Driver', icon: 'engine' },
-  { id: 'l7805', name: 'L7805', desc: '5V Voltage Regulator', icon: 'flash' },
-  { id: 'mpu6050', name: 'MPU6050', desc: '6-Axis Gyro & Accelerometer', icon: 'rotate-3d' },
-  { id: 'ds3231', name: 'DS3231 RTC', desc: 'Real-Time Clock Module', icon: 'clock-outline' },
-  { id: 'max7219', name: 'MAX7219', desc: 'LED Matrix/Display Driver', icon: 'matrix' },
-  { id: 'ws2812b', name: 'WS2812B (NeoPixel)', desc: 'Addressable RGB LED', icon: 'led-on' },
-];
+import { db } from '../../services/firebaseConfig';
+import { collection, getDocs } from 'firebase/firestore';
 
 export default function PinoutsHubScreen() {
   const router = useRouter();
+  const [pinouts, setPinouts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const renderItem = ({ item }: { item: typeof PINOUTS[0] }) => (
+  useEffect(() => {
+    const fetchPinouts = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'pinouts'));
+        const list = querySnapshot.docs.map(doc => doc.data());
+        list.sort((a, b) => a.name.localeCompare(b.name));
+        setPinouts(list);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPinouts();
+  }, []);
+
+  const renderItem = ({ item }: { item: any }) => (
     <TouchableOpacity 
       style={styles.card}
       onPress={() => router.push(`/pinouts/${item.id}` as any)}
       activeOpacity={0.7}
     >
       <View style={styles.iconContainer}>
-        <MaterialCommunityIcons name={item.icon as any} size={36} color="#AF52DE" />
+        <MaterialCommunityIcons name={(item.icon as any) || 'chip'} size={36} color="#AF52DE" />
       </View>
       <View style={styles.cardContent}>
         <Text style={styles.itemName}>{item.name}</Text>
-        <Text style={styles.itemDescription}>{item.desc}</Text>
+        <Text style={styles.itemDescription}>{item.shortDesc}</Text>
       </View>
       <MaterialCommunityIcons name="chevron-right" size={24} color="#C7C7CC" />
     </TouchableOpacity>
@@ -59,12 +54,18 @@ export default function PinoutsHubScreen() {
         <View style={{ width: 28 }} />
       </View>
 
-      <FlatList
-        data={PINOUTS}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.list}
-        renderItem={renderItem}
-      />
+      {loading ? (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <ActivityIndicator size="large" color="#AF52DE" />
+        </View>
+      ) : (
+        <FlatList
+          data={pinouts}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={styles.list}
+          renderItem={renderItem}
+        />
+      )}
     </SafeAreaView>
   );
 }
