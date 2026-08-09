@@ -1,4 +1,4 @@
-export const componentImages: Record<string, any> = {
+export const ASSET_MAP: Record<string, any> = {
   "100nf_ceramic_capacitor.png": require("../../assets/images/components/100nf_ceramic_capacitor.png"),
   "14_segment___16_segment_display.png": require("../../assets/images/components/14_segment___16_segment_display.png"),
   "1k_resistor.png": require("../../assets/images/components/1k_resistor.png"),
